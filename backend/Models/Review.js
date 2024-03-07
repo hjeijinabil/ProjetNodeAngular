@@ -8,10 +8,6 @@ const ReviewSchema = mongoose.Schema(
       max: 5,
       // required: [true, 'Please provide rating'],
     },
-    comment: {
-      type: String,
-      required: [true, 'Please provide review text'],
-    },
     user: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',

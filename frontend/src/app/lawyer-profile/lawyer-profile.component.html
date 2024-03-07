@@ -14,6 +14,11 @@
                       <h4>John Doe</h4>
                       <p class="text-secondary mb-1">Full Stack Developer</p>
                       <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                      
+                      <!-- <app-star-rating [rating]="3.5"></app-star-rating> -->
+                      <app-change-rating [index]="selectedRating" (changed)="handleRatingChange($event)" *ngIf="goToRating"></app-change-rating>
+                      
+                       <!-- <span> <i class="fa fa-star star-rating"></i> <h6>5.0</h6>/5.0</span>  -->
                       <button class="btn btn-primary">Follow</button>
                       <button class="btn btn-outline-primary">Message</button>
                     </div>
@@ -53,7 +58,7 @@
                       <h6 class="mb-0">Full Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      Kenneth Valdez
+                      {{lawyer.fullName}}
                     </div>
                   </div>
                   <hr>
@@ -62,7 +67,7 @@
                       <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      fipjukmuh.al
+                      {{lawyer.email}}
                     </div>
                   </div>
                   <hr>
@@ -71,11 +76,11 @@
                       <h6 class="mb-0">Phone</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      (239) 816-9029
+                      {{lawyer.phoneNumber}}
                     </div>
                   </div>
                   <hr>
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Mobile</h6>
                     </div>
@@ -83,8 +88,8 @@
                       (320) 380-4539
                     </div>
                   </div>
-                  <hr>
-                  <div class="row">
+                  <hr> -->
+                  <!-- <div class="row">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Address</h6>
                     </div>
@@ -92,7 +97,7 @@
                       Bay Area, San Francisco, CA
                     </div>
                   </div>
-                  <hr>
+                  <hr> -->
                   <div class="row">
                     <!-- <div class="col-sm-12">
                       <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>

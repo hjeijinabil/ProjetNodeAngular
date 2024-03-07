@@ -8,18 +8,18 @@ const {
   getSingleReview,
   updateReview,
   deleteReview,
+  getUserRating,
   getSingleLawyerReviews,
-  getAllLawyer
 } = require('../controllers/reviewController');
 
 router.route('/').post(authenticateUser, createReview).get(getAllReviews);
 
 router.route('/lawyer/:id').get(getSingleLawyerReviews);
-router.route('/lawyers').get(getAllLawyer);
+
 
 router
   .route('/:id')
-  .get(getSingleReview)
+  .get(authenticateUser,getUserRating)
   .patch(authenticateUser, updateReview)
   .delete(authenticateUser, deleteReview);
 

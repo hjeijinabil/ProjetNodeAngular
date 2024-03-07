@@ -4,6 +4,10 @@
   
           <div class="card">
                               <div class="card-body">
+                                <h6>Add a Review</h6>
+                                <!-- <app-change-rating></app-change-rating> -->
+                                
+
                                   <h4 class="card-title">Recent Comments</h4>
                                   <h6 class="card-subtitle">Latest Comments section by users</h6> </div>
   
@@ -11,22 +15,25 @@
 
                                 <div class="d-flex flex-row comment-row">
                                     <!-- <input type="text"> -->
-                                    <div class="d-flex flex-row add-comment-section mt-4 mb-4"><input [(ngModel)]="comment"  type="text" class="form-control mr-3" placeholder="Add comment"><button (click)="addComment()" class="btn btn-primary" type="button">Comment</button></div>
+                                    <div class="d-flex flex-row add-comment-section mt-4 mb-4">
+                                        <input [(ngModel)]="comment"  type="text"  class="form-control mr-3" placeholder="Add comment">
+                                        <button (click)="addComment()" class="btn btn-primary" type="button">Comment</button>
+                                    </div>
                                 </div>
   
-                                  <div class="d-flex flex-row comment-row" *ngFor="let review of listReviews">
+                                  <div class="d-flex flex-row comment-row" *ngFor="let comment of listComment">
                                       <div class="p-2"><span class="round"></span></div>
                                       <div class="comment-text w-100">
-                                          <h5>{{review.user}}</h5>
-                                          <div class="comment-footer">
-                                              <span class="date">April 14, 2019</span>
+                                        <p class="m-b-5 m-t-10">Posted by {{comment.user.fullName}} | {{comment.createdAt | date}}</p>
+                                          <!-- <div class="comment-footer">
+                                              <span class="date">{{review.createdAt | date}}</span>
                                               <span class="label label-info">Pending</span> <span class="action-icons">
                                                       <a href="#" data-abc="true"><i class="fa fa-pencil"></i></a>
                                                       <a href="#" data-abc="true"><i class="fa fa-rotate-right"></i></a>
                                                       <a href="#" data-abc="true"><i class="fa fa-heart"></i></a>
                                                   </span>
-                                          </div>
-                                          <p class="m-b-5 m-t-10">{{review.comment}}</p>
+                                          </div> -->
+                                          <h6>{{comment.comment}}</h6>
                                       </div>
                                   </div>
   

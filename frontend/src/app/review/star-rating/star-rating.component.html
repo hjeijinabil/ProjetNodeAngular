@@ -1,0 +1,10 @@
+<div class="star-rating">
+  <span (click)="rate()">
+
+    <i class="fa fa-star" *ngFor="let star of stars"></i>
+  </span>
+    <i class="fa fa-star-half" *ngIf="rating % 1 !== 0"></i>
+    <i class="fa-star-o" *ngFor="let emptyStar of emptyStars"></i>
+     
+
+  </div>

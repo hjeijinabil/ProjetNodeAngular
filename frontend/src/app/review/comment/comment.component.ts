@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReviewService } from '../Services/review.service';
+import { ReviewService } from '../../Services/review.service';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -11,14 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 export class CommentComponent implements OnInit {
   comment:string ="";
   idLawyer: any;
-  listReviews !: any[];
-  constructor(private reviewService : ReviewService,private activateRoute:ActivatedRoute) { }
+  listComment !: any[];
+  constructor(private reviewService : ReviewService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
-    this.idLawyer = this.activateRoute.snapshot.paramMap.get('id');
+    // this.idLawyer = this.activatedRoute.snapshot.paramMap.get('id');
+    this.activatedRoute.paramMap.subscribe(params => {
+      this.idLawyer = params.get('id');
+    });
     console.log("here id", this.idLawyer);
-    this.getLawyerReviews();
+    this.getLawyerComments();
     // this.FormInput = this.FB.group({
     //   fullName:['',[Validators.required,Validators.minLength(3)]],
     // })
@@ -28,22 +31,23 @@ export class CommentComponent implements OnInit {
 
   addComment() {
     console.log(this.comment)
-    this.reviewService.AddReview({
+    this.reviewService.AddComment({
       comment : this.comment,
       lawyer : this.idLawyer,
     }).subscribe(
       (response: any) => {
         console.log("added",response)
-        this.getLawyerReviews();
+        // this.getLawyerComments();
+        this.listComment.unshift(response.comment);
       }
     );
   }
 
-  getLawyerReviews() {
-    this.reviewService.getLawyerReviews(this.idLawyer).subscribe(
+  getLawyerComments() {
+    this.reviewService.getLawyerComments(this.idLawyer).subscribe(
       (response: any) => {
-        console.log("reviews",response)
-        this.listReviews = response.reviews;
+        console.log("comments",response)
+        this.listComment = response.comments;
       }
     )
   }

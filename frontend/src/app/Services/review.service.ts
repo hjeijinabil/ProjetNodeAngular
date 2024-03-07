@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ReviewService {
 
   reviewUrl:string  = "http://localhost:3000/api/v1/reviews";
+  commentUrl:string  = "http://localhost:3000/api/v1/comments";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,15 +21,29 @@ export class ReviewService {
     return this.httpclient.post<{msg:any}>(`${this.reviewUrl}`,obj, this.httpOptions);
   }
 
-  getLawyerReviews(lawyerId : string): Observable<{msg:any}> {
-  
-    return this.httpclient.get<{msg:any}>(`${this.reviewUrl}/lawyer/${lawyerId}`, this.httpOptions);
+  AddComment(obj : any): Observable<{msg:any}> {
+    return this.httpclient.post<{msg:any}>(`${this.commentUrl}`,obj, this.httpOptions);
   }
 
-  getAllLawyers(): Observable<any[]> {
+  getLawyerComments(lawyerId : string): Observable<{msg:any}> {
   
-    return this.httpclient.get<any[]>(`${this.reviewUrl}/lawyers`);
+    return this.httpclient.get<{msg:any}>(`${this.commentUrl}/lawyer/${lawyerId}`, this.httpOptions);
   }
+
+  addRating(rating:number,lawyerId :string) {
+    const obj  = {
+      rating:rating,
+      lawyer:lawyerId
+    }
+    return this.httpclient.post<{msg:any}>(`${this.reviewUrl}`,obj, this.httpOptions);
+  }
+
+  getUserRating(lawyerId :string) {
+    
+    return this.httpclient.get<{msg:any}>(`${this.reviewUrl}/${lawyerId}`, this.httpOptions);
+  }
+
+  
 
   constructor(private httpclient: HttpClient) { }
 }

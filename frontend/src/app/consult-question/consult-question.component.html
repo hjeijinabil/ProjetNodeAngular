@@ -1,0 +1,94 @@
+<div class="header-banner">
+    <h3 class="title">Questions & Answers</h3>
+    <h4 class="title">Get the legal answers you need from licensed attorneys.</h4>
+</div>
+<div class="container">
+<div class="card">
+    <div class="card-body">
+      <!-- <h6>Q&A</h6> -->
+        <!-- <h6 class="card-title">Asked in something | {{question.createdAt}}</h6> -->
+        <h5 class="card-subtitle">{{question.question}}?</h5> </div>
+
+    <div class="comment-widgets m-b-20">
+
+        <div class="d-flex flex-row comment-row" > 
+            <div class="p-2"><span class="round"></span></div>
+            <div class="comment-text w-100">
+              
+                <!-- <div class="comment-footer">
+                    <span class="date">{{review.createdAt | date}}</span>
+                    <span class="label label-info">Pending</span> <span class="action-icons">
+                            <a href="#" data-abc="true"><i class="fa fa-pencil"></i></a>
+                            <a href="#" data-abc="true"><i class="fa fa-rotate-right"></i></a>
+                            <a href="#" data-abc="true"><i class="fa fa-heart"></i></a>
+                        </span>
+                </div> -->
+                <h6 class="single-line-paragraph">{{question.situation}}</h6>
+                <p class="m-b-5 m-t-10">Asked at {{question.createdAt| date }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row gutters-sm ad">
+    <div class="col-md-8">
+        <h3>Ask your own question</h3>
+        <h5>Get a real-time response from a licensed attorney for free!</h5>
+    </div>
+    <div class="col-md-4">
+        <div class="flex-row">
+            <button class="custombtn background" (click)="goToAddQuestion()">Ask</button>
+            <button class="custombtn" (click)="goToListLawyers()">Find a lawyer</button>
+        </div>
+        
+    </div>
+</div>
+
+<div class="advice" *ngIf="isLawyer()">
+    <label for="advice"> Give advice : </label>
+            <!-- <input type="textarea" name="advice"> -->
+            <textarea  rows="4" name="advice" [(ngModel)]="adviceInput"></textarea>
+            <button (click)="CreateSolution()" class="custombtn background">Submit</button>
+        
+</div>
+
+<div class="container" >
+    <div class="card" *ngFor="let solution of listSolution">
+        <div class="card-body" >
+          <!-- <h6>Q&A</h6> -->
+            <!-- <h6 class="card-title">Asked in something | {{question.createdAt}}</h6> -->
+            <!-- <h5 class="card-subtitle">{{question.question}}?</h5> </div> -->
+            <p class="m-b-5 m-t-10">Posted at {{solution.createdAt| date }}</p>
+        <div class="comment-widgets m-b-20">
+    
+            <div class="d-flex flex-row comment-row" > 
+                <div class="p-2"><span class="round"></span></div>
+                <div class="comment-text w-100">
+                  
+                    <!-- <div class="comment-footer">
+                        <span class="date">{{review.createdAt | date}}</span>
+                        <span class="label label-info">Pending</span> <span class="action-icons">
+                                <a href="#" data-abc="true"><i class="fa fa-pencil"></i></a>
+                                <a href="#" data-abc="true"><i class="fa fa-rotate-right"></i></a>
+                                <a href="#" data-abc="true"><i class="fa fa-heart"></i></a>
+                            </span>
+                    </div> -->
+                    <h6 class="single-line-paragraph">{{solution.advice}}</h6>
+                    <!-- <p class="m-b-5 m-t-10">Posted at {{question.createdAt| date }}</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+<div class="container" *ngIf="listSolution.length == 0">
+    <div class="card">
+        <div class="card-body">
+            <h3>No Advice yet</h3>
+        </div>
+
+</div>
+</div>

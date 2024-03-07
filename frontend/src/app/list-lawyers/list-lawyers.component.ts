@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../Services/review.service';
 import { Router } from '@angular/router';
+import { LawyerService } from '../Services/lawyer.service';
 
 @Component({
   selector: 'app-list-lawyers',
@@ -9,11 +10,11 @@ import { Router } from '@angular/router';
 })
 export class ListLawyersComponent implements OnInit{
   listLawyers !:any[];
-  constructor(private reviewService : ReviewService, private route : Router) {}
+  constructor(private lawyerService : LawyerService, private route : Router) {}
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
     console.log("here")
-    this.reviewService.getAllLawyers().subscribe(
+    this.lawyerService.getAllLawyers().subscribe(
       (response: any) => {
 
         this.listLawyers=response.lawyers;

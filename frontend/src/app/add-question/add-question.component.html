@@ -1,0 +1,84 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+    <!--
+    CSS
+    ============================================= -->
+    <link rel="stylesheet" th:href="@{../csss/linearicons.css}">
+    <link rel="stylesheet" th:href="@{../csss/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{../csss/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{../csss/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{../csss/nice-select.css}">
+    <link rel="stylesheet" th:href="@{../csss/animate.min.css}">
+    <link rel="stylesheet" th:href="@{../csss/owl.carousel.css}">
+    <link rel="stylesheet" th:href="@{../csss/main.css}">
+    
+    
+</head>
+<body>
+
+
+
+
+
+<div class="containerr">
+   
+    <h3>Free Q&A with attorneys</h3>
+    <form class="form ticket" (ngSubmit)="addQuestion()" [formGroup]="FormInput" style="margin-top: 8rem" th:action="@{/updateprojet/{id}(id=${projet.id})}"  th:object="${projet}" method="post">
+        
+
+        <div class="form-section">
+            <label>Topic:</label>
+            <input type="text" required formControlName="topic" name="topic">
+        </div>
+
+
+        <div class="form-section">
+            <label>Question:</label>
+            <input type="text"  required formControlName="question" name="question">
+        </div>
+        <div class="form-section">
+            <label >Situation:</label>
+            <textarea  rows="4"  required formControlName="situation" name="situation"></textarea>
+        </div>
+
+        <!-- <div class="form-section">
+            <label >Status:</label>
+            <input type="text" th:field="*{status}" required>
+        </div> -->
+
+
+
+        <button type="submit">Add Question</button>
+    </form>
+</div>
+
+
+<script  th:src="@{/js/vendor/jquery-2.2.4.min.js}"></script>
+<script th:src="@{'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script th:src="@{/js/vendor/bootstrap.min.js}"></script>
+<script th:src="@{/text/javascript}" ></script>
+<script th:src="@{'https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap'}" async defer></script>
+
+<script th:src="@{/js/easing.min.js}"></script>
+<script th:src="@{/js/hoverIntent.js}"></script>
+<script th:src="@{/js/superfish.min.js}"></script>
+<script th:src="@{/js/jquery.ajaxchimp.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.sticky.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/parallax.min.js}"></script>
+<script th:src="@{/js/mail-script.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{js/script1.js}"></script>
+
+</body>
+</html>
+

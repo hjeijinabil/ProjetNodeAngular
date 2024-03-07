@@ -9,10 +9,13 @@ const { log } = require("util");
 const bcrypt = require ("bcrypt");
 const jwt = require ("jsonwebtoken");
 const session = require ("express-session");
+
+
 const authRouter = require("./routes/authRoutes")
-
-
-
+const lawyerRouter = require("./routes/lawyerRoutes")
+const commentRouter = require("./routes/commentRoutes")
+const questionRouter = require("./routes/questionRoutes")
+const solutionRouter = require("./routes/solutionRoutes")
 const reviewRouter = require("./routes/reviewRoutes")
 
 //import mongoose module
@@ -26,16 +29,15 @@ const reviewRouter = require("./routes/reviewRoutes")
 const app = express();
 app.use(express.json());
 
-
 // Enable CORS for all routes
 app.use(cors());
 //connection bd
-mongoose.connect('mongodb://localhost:27017/LawExpert', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// mongoose.connect('mongodb://localhost:27017/LawExpert', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
 
-// mongoose.connect('mongodb+srv://wajdibejaoui26:1234@cluster0.azs73u3.mongodb.net/LawExpert?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://wajdibejaoui26:1234@cluster0.azs73u3.mongodb.net/LawExpert?retryWrites=true&w=majority')
 
 
 
@@ -54,6 +56,11 @@ const User= require("./Models/user");
 //of sign up and login
 app.use('/users', authRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/lawyers', lawyerRouter);
+app.use('/api/v1/comments', commentRouter);
+app.use('/api/v1/questions', questionRouter);
+app.use('/api/v1/solutions', solutionRouter);
+
 
 
 

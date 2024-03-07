@@ -1,0 +1,6 @@
+<div class="star-rating">
+	
+			<i [class.fa-star]="in<index" [class.fa-star-o]="in>=index"  *ngFor="let i of arr;let in=index" (click)="onClickItem(i)"></i>
+	
+	
+</div>

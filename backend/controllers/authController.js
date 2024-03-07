@@ -95,7 +95,7 @@ const login = async (req, res) => {
         };
         console.log(userToSend)
 
-        const token = jwt.sign(userToSend, secretKey, { expiresIn: '1h' });
+        const token = jwt.sign(userToSend, secretKey, { expiresIn: '24h' });
         
 
         res.json({ msg: "Welcome", token: token });
