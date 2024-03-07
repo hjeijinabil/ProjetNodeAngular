@@ -20,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LawyerProfileComponent } from './lawyer-profile/lawyer-profile.component';
 import { CommentComponent } from './comment/comment.component';
 import { ListLawyersComponent } from './list-lawyers/list-lawyers.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ListLawyersComponent } from './list-lawyers/list-lawyers.component';
     ProfileComponent,
     LawyerProfileComponent,
     CommentComponent,
-    ListLawyersComponent
+    ListLawyersComponent,
+    ChatBotComponent
   ],
   imports: [
     BrowserModule,

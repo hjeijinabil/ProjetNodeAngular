@@ -12,6 +12,7 @@ import { LatesNewsComponent } from './lates-news/lates-news.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LawyerProfileComponent } from './lawyer-profile/lawyer-profile.component';
 import { ListLawyersComponent } from './list-lawyers/list-lawyers.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 const routes: Routes = [
   {path: "header", component:HeaderComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path:"latesnews", component:LatesNewsComponent},
   {path:"profile",component:ProfileComponent},
   {path:"lawyerProfile/:id",component:LawyerProfileComponent},
-  {path:"lawyerList",component:ListLawyersComponent}
+  {path:"lawyerList",component:ListLawyersComponent},
+  {path:"chatBot",component:ChatBotComponent}
 
 ];
 
