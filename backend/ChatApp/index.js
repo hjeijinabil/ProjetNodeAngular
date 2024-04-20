@@ -1,25 +1,18 @@
-const app = require("./app");
-
 let express = require('express');
-let app2 = express();
-
+let app = express();
 
 let http = require('http');
-let server = http.Server(app2);
+let server = http.Server(app);
 
 let socketIO = require('socket.io');
-let io = socketIO(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-  log: true,
-});
+let io = socketIO(server);
 
-console.log('herehere')
+const port = process.env.CHATPORT || 7000;
+
 io.on('connection', (socket) => {
     socket.on('join', (data) => {
         console.log(data)
+        console.log(data.room)
         socket.join(data.room);
         socket.broadcast.to(data.room).emit('user joined');
     });
@@ -29,16 +22,8 @@ io.on('connection', (socket) => {
     });
 });
 
-
-
-
-const port = 3000;
-
-
-
-// Your routes and other server configurations go here
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+server.listen(port, () => {
+    console.log(`started on port: ${port}`);
 });
 
+module.exports = io

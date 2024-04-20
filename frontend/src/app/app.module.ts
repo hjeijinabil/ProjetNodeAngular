@@ -25,7 +25,12 @@ import { ChangeRatingComponent } from './review/change-rating/change-rating.comp
 import { ListQuestionsComponent } from './list-questions/list-questions.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { ConsultQuestionComponent } from './consult-question/consult-question.component';
+import { ChatComponent } from './ChatApp/chat/chat.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig,GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+} from '@abacritt/angularx-social-login';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,16 +54,37 @@ import { ConsultQuestionComponent } from './consult-question/consult-question.co
     ChangeRatingComponent,
     ListQuestionsComponent,
     AddQuestionComponent,
-    ConsultQuestionComponent
+    ConsultQuestionComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule
+    ],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '829700418921-41kov6odt6mbba27qabl6q1b9jv4k5mm.apps.googleusercontent.com'
+            )
+          },
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

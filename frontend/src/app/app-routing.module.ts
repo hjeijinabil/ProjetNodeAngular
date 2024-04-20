@@ -15,6 +15,7 @@ import { ListLawyersComponent } from './list-lawyers/list-lawyers.component';
 import { ListQuestionsComponent } from './list-questions/list-questions.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { ConsultQuestionComponent } from './consult-question/consult-question.component';
+import { ChatComponent } from './ChatApp/chat/chat.component';
 
 const routes: Routes = [
   {path: "header", component:HeaderComponent},
@@ -34,6 +35,8 @@ const routes: Routes = [
   {path:"questionList",component:ListQuestionsComponent},
   {path:"addQuestion",component:AddQuestionComponent},
   {path:"Question/:id",component:ConsultQuestionComponent},
+  {path:"chat",component:ChatComponent},
+  {path:"chat/:id",component:ChatComponent},
 ];
 
 @NgModule({

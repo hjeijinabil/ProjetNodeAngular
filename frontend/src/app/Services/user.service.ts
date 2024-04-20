@@ -9,6 +9,7 @@ import { Token } from '@angular/compiler';
 })
 export class UserService {
   UserUrl:string  = " http://localhost:3000/users"
+  MeUrl:string  = " http://localhost:3000/api/v1/me"
 
 
   constructor(private httpclient: HttpClient) { }
@@ -80,5 +81,16 @@ getUserBydId(id:any):Observable<{userFinded:any}>{
 updateProfile(obj:any):Observable<{msg:any}>{
   return this.httpclient.put<{msg:any}>(
     `${this.UserUrl}/updateUser`,obj )
+}
+
+getCurrentUser():Observable<{user:any}>{
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + sessionStorage.getItem('jwt')
+    })
+  };
+  
+  return this.httpclient.get<{user:any}>(`${this.MeUrl}`, httpOptions);
 }
  }

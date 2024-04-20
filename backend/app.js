@@ -11,13 +11,16 @@ const jwt = require ("jsonwebtoken");
 const session = require ("express-session");
 
 
+
+
 const authRouter = require("./routes/authRoutes")
 const lawyerRouter = require("./routes/lawyerRoutes")
 const commentRouter = require("./routes/commentRoutes")
 const questionRouter = require("./routes/questionRoutes")
 const solutionRouter = require("./routes/solutionRoutes")
 const reviewRouter = require("./routes/reviewRoutes")
-
+const userRouter = require("./routes/userRoutes")
+const chatRouter = require("./ChatApp/chatRoutes")
 //import mongoose module
 //const mongoose = require("mongoose");
 //import body-parser module
@@ -28,6 +31,7 @@ const reviewRouter = require("./routes/reviewRoutes")
 //creation app BE  name app
 const app = express();
 app.use(express.json());
+
 
 // Enable CORS for all routes
 app.use(cors());
@@ -60,6 +64,8 @@ app.use('/api/v1/lawyers', lawyerRouter);
 app.use('/api/v1/comments', commentRouter);
 app.use('/api/v1/questions', questionRouter);
 app.use('/api/v1/solutions', solutionRouter);
+app.use('/api/v1/me', userRouter);
+app.use('/api/v1/chat', chatRouter);
 
 
 

@@ -70,6 +70,10 @@ export class LawyerProfileComponent  {
       
     )
   }
+
+  message(){
+    this.route.navigate([`chat/${this.idLawyer}`]);
+  }
   
 
 

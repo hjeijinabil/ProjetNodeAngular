@@ -42,6 +42,8 @@ const createReview = async (req, res) => {
   else
     res.status(StatusCodes.BAD_REQUEST).json({ msg : 'create review error' });
 };
+
+
 const getAllReviews = async (req, res) => {
   const reviews = await Review.find({}).populate({
     path: 'lawyer',

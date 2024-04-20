@@ -38,7 +38,10 @@
      
       <div class="form-submit-btn">
         <input type="submit" value="SIGN IN" [disabled]="FormInput.invalid">
+        <asl-google-signin-button 
+        data-width="800" size="large" type='standard' text="signin_with" theme="filled_blue">Sign in with</asl-google-signin-button>
       </div>
+      
       <div class="alert alert-danger" role="alert">
         {{errormsg}}
       </div>

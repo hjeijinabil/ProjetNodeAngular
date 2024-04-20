@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../Services/user.service';
 import { Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
+import { SocialAuthService } from "@abacritt/angularx-social-login";
+import { SocialUser } from "@abacritt/angularx-social-login";
+
+// import {  } from "@abacritt/GoogleSigninButtonModule";
 
 @Component({
   selector: 'app-sign-in',
@@ -12,8 +16,12 @@ import jwt_decode from "jwt-decode";
 export class SignInComponent implements OnInit{
   FormInput!:FormGroup;
   errormsg:String=""
+
+  user!: SocialUser;
+  loggedIn!: boolean;
    
-  constructor(private FB:FormBuilder, private userservice:UserService, private route: Router){
+  constructor(private FB:FormBuilder, private userservice:UserService, private route: Router,
+    private authService: SocialAuthService){
 
   }
   ngOnInit(): void {
@@ -26,6 +34,12 @@ export class SignInComponent implements OnInit{
         // Complexité
       ]]
     }) 
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      console.log(user);
+    });
       
   }
   decodeToken(token: string) {
