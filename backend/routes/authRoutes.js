@@ -8,7 +8,7 @@ const path = require ("path");
 const app = express();
 
 const { register,login } = require('../controllers/authController');
-const { deleteUser,getUserById ,updateUser} = require('../controllers/userController');
+const { deleteUser,getUserById ,updateUser,uploadFile} = require('../controllers/userController');
 
 // config multer upload images
 app.use('/images', express.static(path.join('images')))
@@ -48,6 +48,7 @@ router.post('/login', login);
 router.delete('/delete', deleteUser);
 router.get('/getUserById/:id', getUserById);
 router.put('/updateUser', updateUser);
+router.put('/uploadFile/:id',uploadFile)
 
 // router.get('/logout', logout);
 

@@ -100,5 +100,7 @@ const authenticateJWT = (req, res, next) => {
       }
     );
   };
-  
-  module.exports= {deleteUser,getUserById,updateUser};
+  const uploadFile = async (req,res)=>{
+    console.log("here fiel", req.body);
+  }
+  module.exports= {deleteUser,getUserById,updateUser,uploadFile};

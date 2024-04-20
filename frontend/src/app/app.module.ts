@@ -20,6 +20,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { LawyerProfileComponent } from './lawyer-profile/lawyer-profile.component';
 import { CommentComponent } from './review/comment/comment.component';
 import { ListLawyersComponent } from './list-lawyers/list-lawyers.component';
+
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
+
 import { StarRatingComponent } from './review/star-rating/star-rating.component';
 import { ChangeRatingComponent } from './review/change-rating/change-rating.component';
 import { ListQuestionsComponent } from './list-questions/list-questions.component';
@@ -50,6 +53,9 @@ import {
     LawyerProfileComponent,
     CommentComponent,
     ListLawyersComponent,
+
+    ChatBotComponent,
+
     StarRatingComponent,
     ChangeRatingComponent,
     ListQuestionsComponent,

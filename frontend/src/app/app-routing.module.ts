@@ -12,10 +12,12 @@ import { LatesNewsComponent } from './lates-news/lates-news.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LawyerProfileComponent } from './lawyer-profile/lawyer-profile.component';
 import { ListLawyersComponent } from './list-lawyers/list-lawyers.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { ListQuestionsComponent } from './list-questions/list-questions.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { ConsultQuestionComponent } from './consult-question/consult-question.component';
 import { ChatComponent } from './ChatApp/chat/chat.component';
+
 
 const routes: Routes = [
   {path: "header", component:HeaderComponent},
@@ -32,6 +34,10 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent},
   {path:"lawyerProfile/:id",component:LawyerProfileComponent},
   {path:"lawyerList",component:ListLawyersComponent},
+
+  {path:"chatBot",component:ChatBotComponent},
+
+
   {path:"questionList",component:ListQuestionsComponent},
   {path:"addQuestion",component:AddQuestionComponent},
   {path:"Question/:id",component:ConsultQuestionComponent},

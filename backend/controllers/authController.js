@@ -37,7 +37,6 @@ app.use(
          }
 
          // Create the avatar URL using the uploaded file
-         if (req.file && req.file.filename) {
          // Create a new user with the hashed password
          const newUser = new User({
              email: req.body.email,
@@ -47,16 +46,15 @@ app.use(
              phoneNumber: req.body.phoneNumber,
              gender: req.body.gender,
              role:req.body.role,
-             avatar: `http://localhost:3000/images/${req.file.filename}`
+            //  avatar: `http://localhost:3000/images/${req.file.filename}`
              // ... other fields of the model
          });
  
          // Save the user to the database
          await newUser.save();
-        }
-        else {
-          return res.json({ msg: 'No file provided or filename is undefined' });
-      }
+        
+        
+        
          res.json({ msg: 'Registered successfully' });
      } catch (error) {
          console.error('Error during user registration:', error);

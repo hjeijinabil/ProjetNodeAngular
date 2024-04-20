@@ -14,49 +14,49 @@ export class UserService {
 
   constructor(private httpclient: HttpClient) { }
  
-  signup(obj: any, img: File): Observable<{ msg: any }> {
-    const formData = new FormData();
+  signup(obj: any): Observable<{ msg: any }> {
+    // const formData = new FormData();
 
     // Append image if it exists
-    if (img) {
-      formData.append('img', img);
-    }
+    // if (img) {
+    //   formData.append('img', img);
+    // }
 
-    // Append other properties
-    formData.append('fullName', obj.fullName);
-    formData.append('userName', obj.userName);
-    formData.append('phoneNumber', obj.phoneNumber);
-    formData.append('email', obj.email);
-    formData.append('password', obj.password);
-    formData.append('gender', obj.gender);
+    // // Append other properties
+    // formData.append('fullName', obj.fullName);
+    // formData.append('userName', obj.userName);
+    // formData.append('phoneNumber', obj.phoneNumber);
+    // formData.append('email', obj.email);
+    // formData.append('password', obj.password);
+    // formData.append('gender', obj.gender);
 
     // Display FormData contents in the console for debugging
-    this.logFormData(formData);
-    console.log('Image File:', img);
+    // this.logFormData(formData);
+    // console.log('Image File:', img);
 
     // Set headers to 'multipart/form-data'
     // const headers = new HttpHeaders({ 'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' });
 
-    function generateBoundary(): string {
-      return '---------------------------' + Date.now().toString(16);
-    }
+    // function generateBoundary(): string {
+    //   return '---------------------------' + Date.now().toString(16);
+    // }
     
-    const boundary = generateBoundary();
+    // const boundary = generateBoundary();
     
     // const headers = new HttpHeaders({
     //   'Content-Type': `multipart/form-data; boundary=${boundary}`
     // });
 
     // Send POST request
-    return this.httpclient.post<{ msg: any }>(`${this.UserUrl}/signup`, formData );
+    return this.httpclient.post<{ msg: any }>(`${this.UserUrl}/signup`, obj );
   }
-  private logFormData(formData: FormData): void {
-    console.group('FormData Contents');
-    formData.forEach((value, key) => {
-      console.log(`${key}:`, value);
-    });
-    console.groupEnd();
-  }
+  // private logFormData(formData: FormData): void {
+  //   console.group('FormData Contents');
+  //   formData.forEach((value, key) => {
+  //     console.log(`${key}:`, value);
+  //   });
+  //   console.groupEnd();
+  // }
   
   
   
@@ -82,7 +82,6 @@ updateProfile(obj:any):Observable<{msg:any}>{
   return this.httpclient.put<{msg:any}>(
     `${this.UserUrl}/updateUser`,obj )
 }
-
 getCurrentUser():Observable<{user:any}>{
   const httpOptions = {
     headers: new HttpHeaders({
@@ -92,5 +91,14 @@ getCurrentUser():Observable<{user:any}>{
   };
   
   return this.httpclient.get<{user:any}>(`${this.MeUrl}`, httpOptions);
+}
+UploadFile(id:any, img:File){
+//  const formData = new FormData();
+
+//     if (img) {
+//       formData.append('img', img);
+//     }
+//     formData.append('id',id);
+    return this.httpclient.put(`${this.UserUrl}/uploadFile/${id}`,img)
 }
  }

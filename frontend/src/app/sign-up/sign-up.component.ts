@@ -18,7 +18,7 @@ password2: string = '';
 errormsg:String="";
 title:string="Registration"
 idUser : any;
-imagePreview: any;
+
 users:any={};
   constructor( private FB:FormBuilder, private userservice: UserService, private route :Router,private activateRoute:ActivatedRoute){}
  
@@ -93,10 +93,10 @@ this.route.navigate(['signin'])
 )
   }else{
 
-  this.userservice.signup(this.FormInput.value , this.FormInput.value.img).subscribe(
+  this.userservice.signup(this.FormInput.value ).subscribe(
     (data: any) => {
       console.log('Sign up successful', data);
-      console.log("rr", this.FormInput.get('file')?.value);
+    
       
       // Check if the response indicates success
       if (data.msg === 'Registered successfully') {
@@ -109,26 +109,6 @@ this.route.navigate(['signin'])
   );}
 }
 
-onImageSelected(event: Event) {
-  const fileInput = event.target as HTMLInputElement;
 
-  if (fileInput && fileInput.files && fileInput.files.length > 0) {
-    const file = fileInput.files[0];
-
-    // Assuming this.FormInput is an instance of FormGroup
-    this.FormInput.patchValue({ img: file });
-    this.FormInput.updateValueAndValidity();
-
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      // Assuming this.imagePreview is a property to store the image preview
-      this.imagePreview = reader.result as string;
-    };
-  } else {
-    console.error('No file selected'); // Handle the case where no file is selected
-  }
-}
 
 }

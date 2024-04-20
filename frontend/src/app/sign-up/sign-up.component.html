@@ -122,27 +122,26 @@
             </div>
           </div>
       </div>
-      <!-- <div class="user-input-box">
+      <div class="user-input-box">
         <label for="role">Role</label>
       
-                <select class="form-select" aria-label="Default select example" id="role"
+        <select class="form-select form-select-lg mb-3" aria-label="Large select example"
+          id="role"
                 name="role"
-                formControlName="role"
-                [(ngModel)]="users.role">
+                formControlName="role"  >
                   <option selected>lawyer</option>
-                  <option value="1">lawyer</option>
                   <option value="2">client</option>
                 </select>
                 <div class="alert alert-warning alert-dismissible fade show" *ngIf="!FormInput.pristine && FormInput.controls['role'].hasError('required')">
                 Role is required.                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
              
-      </div> -->
-      <div class="form-submit-btn">
+      </div>
+      <!-- <div class="form-submit-btn">
 
   <input type="file" value="Register Avatar"  name="img" (change)="onImageSelected($event)"  >
   <img [src]="imagePreview"  alt="">
-      </div>
+      </div> -->
       <div class="form-submit-btn">
         <input type="submit" [value]="title" (click)="signup()" [disabled]="FormInput.invalid">
       </div>

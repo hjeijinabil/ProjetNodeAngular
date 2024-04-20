@@ -36,12 +36,12 @@ app.use(express.json());
 // Enable CORS for all routes
 app.use(cors());
 //connection bd
-// mongoose.connect('mongodb://localhost:27017/LawExpert', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
+mongoose.connect('mongodb://localhost:27017/LawExpert', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
-mongoose.connect('mongodb+srv://wajdibejaoui26:1234@cluster0.azs73u3.mongodb.net/LawExpert?retryWrites=true&w=majority')
+// mongoose.connect('mongodb+srv://wajdibejaoui26:1234@cluster0.azs73u3.mongodb.net/LawExpert?retryWrites=true&w=majority')
 
 
 

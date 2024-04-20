@@ -11,7 +11,7 @@
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
-                                <input type="file" name="file"/>
+                                <input type="file" name="file"  name="img" (change)="onImageSelected($event)" [(ngModel)]="this.obj" />
                             </div>
                         </div>
                     </div>
@@ -37,8 +37,8 @@
                     </div>
                  
                     <div class="col-md-2">
-                        <input type="submit" class="btn btn-secondary btn-lg" name="btnAddMore" (click)="editProfile(user.id)" value="Edit Profile"/>
-                        <input type="submit" class="btn btn-secondary btn-lg" name="btnAddMore"(click)="deleteUser()" value="Delete Account"/>
+                        <input type="submit" class="btn btn-danger" name="btnAddMore"(click)="deleteUser()" value="Delete Account"/>
+                        <input type="submit" class="btn btn-dark" name="btnAddMore" (click)="editProfile(user.id)" value="Edit Profile"/>
 
                     </div>
                 </div>
