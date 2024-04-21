@@ -34,18 +34,18 @@ const socialAuth =  async (req, res) => {
             await newUser.save();
         } 
 
-        
+        const existingUser = await User.findOne({ email: payload.email });
   // If request specified a G Suite domain:
   // const domain = payload['hd'];
 
   let userToSend = {
-    userName: '',
-    fullName: doc.fullName,
-    id: doc._id,
-    role: doc.role,
-    email: doc.email,
-    gender: '',
-    phoneNumber: ''
+    userName: existingUser.userName,
+    fullName: existingUser.fullName,
+    id: existingUser._id,
+    role: existingUser.role,
+    email: existingUser.email,
+    gender: existingUser.gender,
+    phoneNumber: existingUser.phoneNumber
 };
 
 const newtoken = jwt.sign(userToSend, secretKey, { expiresIn: '24h' });
