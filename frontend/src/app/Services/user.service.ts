@@ -63,6 +63,10 @@ export class UserService {
 login(obj:any): Observable<{ msg: string, token: Token}> {
   return this.httpclient.post<{ msg: string, token:Token }>(`${this.UserUrl}/login`, obj);
 }
+
+socialAuth(token:any): Observable<{ msg: string, token: Token}> {
+  return this.httpclient.post<{ msg: string, token:Token }>(`${this.UserUrl}/socialAuth/${token}`, {token});
+}
 deleteUser(): Observable<{msg:any}> {
   const httpOptions = {
     headers: new HttpHeaders({

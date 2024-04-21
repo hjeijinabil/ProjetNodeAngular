@@ -8,6 +8,7 @@ const path = require ("path");
 const app = express();
 
 const { register,login } = require('../controllers/authController');
+const { socialAuth } = require('../controllers/socialAuthController');
 const { deleteUser,getUserById ,updateUser,uploadFile} = require('../controllers/userController');
 
 // config multer upload images
@@ -43,6 +44,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single("img");
 
 
+router.post('/socialAuth/:token', socialAuth);
 router.post('/signup',upload, register);
 router.post('/login', login);
 router.delete('/delete', deleteUser);

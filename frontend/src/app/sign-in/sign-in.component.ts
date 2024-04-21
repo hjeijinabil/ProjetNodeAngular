@@ -36,6 +36,22 @@ export class SignInComponent implements OnInit{
     }) 
 
     this.authService.authState.subscribe((user) => {
+      this.userservice.socialAuth(user.idToken).subscribe(
+        (response : any) => {
+          sessionStorage.setItem("jwt", response.token);
+  
+            // Décoder le token pour obtenir les informations de l'utilisateur
+            let user: any = this.decodeToken(response.token);
+            console.log("Decoded user:", user);
+  
+            // Rediriger en fonction du rôle de l'utilisateur
+            if (user.role === "lawyer") {
+              this.route.navigate(['profile']); // Utiliser la route admin appropriée
+            } else {
+              this.route.navigate(['profile']); // Utiliser la route utilisateur appropriée
+            }
+        }
+      )
       this.user = user;
       this.loggedIn = (user != null);
       console.log(user);
