@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdviceService } from '../Services/advice.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import jwt_decode from "jwt-decode";
+import { TtsService } from '../Services/tts.service';
 
 @Component({
   selector: 'app-consult-question',
@@ -17,7 +18,16 @@ export class ConsultQuestionComponent implements OnInit{
 
   constructor(private adviceService :AdviceService, 
     private activatedRoute : ActivatedRoute,
-    private route:Router) {}
+    private route:Router,
+    private ttsService: TtsService) {}
+
+
+
+
+  speakText(): void {
+    this.ttsService.speak(this.question.situation);
+  }
+
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(params => {

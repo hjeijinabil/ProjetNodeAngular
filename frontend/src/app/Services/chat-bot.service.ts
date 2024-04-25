@@ -15,7 +15,10 @@ export class ChatBotService {
   messageMap:any={
     "hi":"hello",
     "how are you":" I am fine",
-    "default":" I cant't understand"
+    "give me lawyers": "Hjeiji Nabil, wajdi bejaoui",
+    
+
+    "default":" I can't understand"
   }
   getBotAnswer(msg:any){
     const userMessage = new Message('user', msg);

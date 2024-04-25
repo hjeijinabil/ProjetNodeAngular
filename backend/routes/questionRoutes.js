@@ -9,7 +9,7 @@ const {
   getSingleQuestion,
 } = require('../controllers/questionController');
 
-router.route('/').post(authenticateUser, createQuestion).get(authenticateUser,getAllQuestions);
+router.route('/').post(authenticateUser, createQuestion).get(getAllQuestions);
 
 router
   .route('/:id')

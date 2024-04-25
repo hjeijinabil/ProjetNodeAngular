@@ -17,18 +17,7 @@ export class ChatBotComponent implements OnInit{
 
 
 
-  // Function to filter out old messages
-  private filterOldMessages() {
-    this.messages = this.messages.filter((message) => {
-      return new Date(message.time).getTime() > this.messageThresholdTime;
-    });
-  }
-  private handleNewMessage() {
-    // ... Your existing code to add a new message to this.messages
-  
-    // Filter out old messages after adding a new one
-    this.filterOldMessages();
-  }
+ 
   constructor(private chatService : ChatBotService){
 
   }
@@ -36,10 +25,10 @@ export class ChatBotComponent implements OnInit{
   ngOnInit(): void {
     this.chatService.conversation.subscribe((val) => {
       this.messages = this.messages.concat(val);
-      const maxMessagesToShow = 10;
-      if (this.messages.length > maxMessagesToShow) {
-        this.messages = this.messages.slice(-maxMessagesToShow);
-      }
+      // const maxMessagesToShow = 10;
+      // if (this.messages.length > maxMessagesToShow) {
+      //   this.messages = this.messages.slice(-maxMessagesToShow);
+      // }
     });
   }
 

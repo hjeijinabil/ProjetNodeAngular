@@ -12,11 +12,8 @@
                (click)="selectUserHandler(user._id)"
           >
   
-            <img [src]="user?.image"
-                 [alt]="user?.fullName"
-                 class="avatar"
-            />
-            <p class="username">{{user?.name}}</p>
+
+            <p class="username">{{user?.fullName}}</p>
   
           </div>
         </div>
@@ -28,19 +25,20 @@
           <ng-container *ngIf="selectedUser">
             <div class="chat-header">
   
-              <img [src]="selectedUser?.image"
-                   [alt]="selectedUser?.name"
+              <!-- <img [src]="selectedUser?.image"
+                   [alt]="selectedUser?.fullName"
                    class="avatar"
-              />
-              <p class="username">{{selectedUser?.name}}</p>
+              /> -->
+              <p class="username">{{selectedUser?.fullName}}</p>
   
             </div>
   
             <div class="chat-body">
               <div *ngFor="let item of messageArray"
-              [ngClass]="{'same-user': item?.user === currentUser?.name}">
+              [ngClass]="{'same-user': item?.sender === currentUser?._id}">
                 <p class="message-container">{{item?.message}}</p>
               </div>
+              
             </div>
   
             <div class="chat-footer">
@@ -65,6 +63,12 @@
               </div>
   
             </div>
+          </ng-container>
+          <ng-container *ngIf="!selectedUser">
+            <div class="nouser">
+              <h3>Select a user</h3>
+            </div>
+            
           </ng-container>
         </div>
   

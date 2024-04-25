@@ -7,12 +7,13 @@
     <div class="card-body">
       <!-- <h6>Q&A</h6> -->
         <!-- <h6 class="card-title">Asked in something | {{question.createdAt}}</h6> -->
-        <h5 class="card-subtitle">{{question.question}}?</h5> </div>
+        <h5 class="card-subtitle">{{question.question}}?</h5>
+        <button class="btn-primary" (click)="speakText()">text to speech</button> </div>
 
     <div class="comment-widgets m-b-20">
 
         <div class="d-flex flex-row comment-row" > 
-            <div class="p-2"><span class="round"></span></div>
+            <div class="p-2"><span class="round"></span></div> 
             <div class="comment-text w-100">
               
                 <!-- <div class="comment-footer">

@@ -35,7 +35,7 @@ export class ChatService {
 
   getMessage(): Observable<any> {
     console.log("connection pending");
-    return new Observable<{user: string, message: string}>(observer => {
+    return new Observable<any>(observer => {
       this.socket.on('new message', (data : any) => {
         console.log("pending2")
         console.log(data)

@@ -12,8 +12,10 @@ export class ChatComponent implements OnInit {
 
   public roomId!: string;
   public messageText!: string;
-  public messageArray: { user: string, message: string }[] = [];
+  public messageArray: { receiver: string,sender : string, message: string, _id :string, roomId:string }[] = [];
   private storageArray !:any[];
+
+  
 
   public showScreen = false;
   public phone!: string;
@@ -22,58 +24,12 @@ export class ChatComponent implements OnInit {
   public userList :any[] = [];
   
 
-  // public userList = [
-  //   {
-  //     id: 1,
-  //     name: 'The Swag Coder',
-  //     phone: '9876598765',
-  //     image: 'assets/user/user-1.png',
-  //     roomId: {
-  //       2: 'room-1',
-  //       3: 'room-2',
-  //       4: 'room-3'
-  //     }
-  //   },
-  //   {
-  //     id: 2,
-  //     name: 'Wade Warren',
-  //     phone: '9876543210',
-  //     image: 'assets/user/user-2.png',
-  //     roomId: {
-  //       1: 'room-1',
-  //       3: 'room-4',
-  //       4: 'room-5'
-  //     }
-  //   },
-  //   {
-  //     id: 3,
-  //     name: 'Albert Flores',
-  //     phone: '9988776655',
-  //     image: 'assets/user/user-3.png',
-  //     roomId: {
-  //       1: 'room-2',
-  //       2: 'room-4',
-  //       4: 'room-6'
-  //     }
-  //   },
-  //   {
-  //     id: 4,
-  //     name: 'Dianne Russell',
-  //     phone: '9876556789',
-  //     image: 'assets/user/user-4.png',
-  //     roomId: {
-  //       1: 'room-3',
-  //       2: 'room-5',
-  //       3: 'room-6'
-  //     }
-  //   }
-  // ];
 
 
   ngOnInit() : void {
     let id: any;
     id= this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(id)
+    // console.log(id)
     
 
     // this.activatedRoute.params.subscribe(params => {
@@ -95,8 +51,8 @@ export class ChatComponent implements OnInit {
     if (id) {
       this.userService.getUserBydId(id).subscribe(
         (response :any) => {
-          console.log(response);
-          console.log(response.userFinded)
+          // console.log(response);
+          // console.log(response.userFinded)
           this.userList.push(response.userFinded)
         }
       )
@@ -125,9 +81,15 @@ export class ChatComponent implements OnInit {
 
   getMessage() {
     this.chatService.getMessage()
-      .subscribe((data: { user: string, room: string, message: string }) => {
+      .subscribe((data) => {
         setTimeout(() => {
-          this.messageArray.push(data);
+
+          console.log("message from getMessage",data);
+          console.log(this.currentUser._id)
+          console.log(data.message.sender)
+          console.log(data.message.receiver)
+          if (data.message.receiver === this.currentUser._id)
+          this.messageArray.push(data.message);
         }, 500);
       });
   }
@@ -135,9 +97,9 @@ export class ChatComponent implements OnInit {
   getContactList() {
     this.chatService.getContactList().subscribe(
       (response :any) => {
-        console.log(response)
+        // console.log(response)
         this.userList = [...this.userList, ...response.users]
-        console.log(this.userList)
+        // console.log(this.userList)
       }
     )
   }
@@ -168,7 +130,7 @@ export class ChatComponent implements OnInit {
 
     this.chatService.getAllMessagesDB(this.roomId).subscribe(
       (response :any) => {
-        console.log(response.messages)
+        // console.log(response.messages)
         this.messageArray = response.messages
       }
     )
@@ -176,21 +138,6 @@ export class ChatComponent implements OnInit {
     this.join(this.currentUser.name, this.roomId);
   }
 
-  // selectUserHandler(id: string): void {
-  //   this.selectedUser = this.userList.find(user => user.id === id);
-  //   this.roomId = this.selectedUser.roomId[this.currentUser.id];
-  //   this.messageArray = [];
-
-  //   this.storageArray = this.chatService.getStorage();
-  //   const storeIndex = this.storageArray
-  //     .findIndex((storage : any) => storage.roomId === this.roomId);
-
-  //   if (storeIndex > -1) {
-  //     this.messageArray = this.storageArray[storeIndex].chats;
-  //   }
-
-  //   this.join(this.currentUser.name, this.roomId);
-  // }
 
   join(username: string, roomId: string): void {
     this.chatService.joinRoom({user: username, room: roomId});
@@ -200,13 +147,22 @@ export class ChatComponent implements OnInit {
     this.chatService.storeMessageDB({
       receiver: this.selectedUser._id,
       roomId: this.roomId,
-      message: this.messageText
+      message: this.messageText,
+      
+      
     }).subscribe(
       (response :any ) => {
-        console.log(response)
+        // console.log("message from sendmessage",response)
         this.messageArray.push(response.message);
       }
     );
+
+    this.chatService.sendMessage({
+      receiver: this.selectedUser._id,
+      room: this.roomId,
+      message: this.messageText,
+      sender : this.currentUser._id
+    });
 
     // this.storageArray = this.chatService.getStorage();
     // console.log(this.storageArray)

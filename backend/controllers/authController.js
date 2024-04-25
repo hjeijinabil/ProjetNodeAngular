@@ -29,6 +29,7 @@ app.use(
  const register =  async (req, res) => {
      console.log("here sign up");
      console.log("tt", req.body);
+     req.body.role="client"
      try {
          // Check if the email already exists in the database
          const existingUser = await User.findOne({ email: req.body.email });
