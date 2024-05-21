@@ -33,7 +33,7 @@ const routes: Routes = [
 
   {path:"signin", component:SignInComponent},
   {path:"latesnews", component:LatesNewsComponent},
-  {path:"profile",component:ProfileComponent},
+  // {path:"profile",component:ProfileComponent},
   {path:"lawyerProfile/:id",component:LawyerProfileComponent},
   {path:"lawyerList",component:ListLawyersComponent},
 
@@ -47,7 +47,7 @@ const routes: Routes = [
   {path:"chat/:id",component:ChatComponent},
   { path: ':meeting/:passcode/:role', component: ZoomComponent },
 { path: 'zoom', component: ZoomComponent },
-{ path: 'myprofile', component: MyProfileComponent },
+{ path: 'profile', component: MyProfileComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
