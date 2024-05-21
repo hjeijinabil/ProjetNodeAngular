@@ -34,6 +34,8 @@ import { SocialLoginModule, SocialAuthServiceConfig,GoogleSigninButtonModule } f
 import {
   GoogleLoginProvider,
 } from '@abacritt/angularx-social-login';
+import { ZoomService } from './Zoom/zoom.service';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +63,8 @@ import {
     ListQuestionsComponent,
     AddQuestionComponent,
     ConsultQuestionComponent,
-    ChatComponent
+    ChatComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import {
     GoogleSigninButtonModule
     ],
   providers: [
+    ZoomService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

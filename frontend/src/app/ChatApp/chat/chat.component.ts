@@ -130,7 +130,7 @@ export class ChatComponent implements OnInit {
 
     this.chatService.getAllMessagesDB(this.roomId).subscribe(
       (response :any) => {
-        // console.log(response.messages)
+        console.log(response.messages)
         this.messageArray = response.messages
       }
     )

@@ -1,6 +1,13 @@
 body {
     background-color: #E5E5E5;
   }
+
+  .search {
+    border-radius: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 30px;
+  }
   
   .container-fluid {
     padding: 50px 200px;
@@ -8,20 +15,22 @@ body {
   }
   
   .user-list-card {
-    background-color: white;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     height: calc(100vh - 100px);
     padding: 10px;
-    background-color: #5a5959;
+    background-color: #ffffff;
   
     .user-card {
       display: flex;
       padding: 10px;
       cursor: pointer;
+      border-radius: 10px;
+      margin-bottom: 5px;
+      background-color: #333334;
   
       &.active {
-        background-color: #EDEDED;
+        background-color: #333334;
       }
   
       .avatar {
@@ -39,11 +48,12 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        color: #ffffff;
       }
     }
   
     .user-card:not(:last-child) {
-      border-bottom: 1px solid #1005d3;
+      /* border-bottom: 1px solid #1005d3; */
     }
   }
   
@@ -57,7 +67,7 @@ body {
   
     .chat-header {
       height: 70px;
-      background-color: #e32323;
+      background-color: rgb(66, 66, 64);
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -77,6 +87,7 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        color: #ffffff;
       }
     }
   

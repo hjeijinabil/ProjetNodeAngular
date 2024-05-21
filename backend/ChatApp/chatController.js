@@ -74,14 +74,24 @@ const AddMessage = async (req, res) => {
 
   const getContactList = async (req, res) => {
     console.log("me",req.user.id)
-    
-    const users = await User.find({ _id: { $ne: req.user.id } });
+    if (req.user.role ==='client') {
+      const users = await User.find({ _id: { $ne: req.user.id }, role:'lawyer' });
     if (!users)
         res.status(StatusCodes.OK).json({ users:[] });
 
         const filteredUsers = users.filter(user => user._id !== req.user.id);
   
     res.status(StatusCodes.OK).json({ users : users });
+    } else {
+      const users = await User.find({ _id: { $ne: req.user.id }, role:'client' });
+    if (!users)
+        res.status(StatusCodes.OK).json({ users:[] });
+
+        const filteredUsers = users.filter(user => user._id !== req.user.id);
+  
+    res.status(StatusCodes.OK).json({ users : users });
+    }
+    
   }
 
 

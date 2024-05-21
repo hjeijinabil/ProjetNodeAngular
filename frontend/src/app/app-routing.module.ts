@@ -17,6 +17,8 @@ import { ListQuestionsComponent } from './list-questions/list-questions.componen
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { ConsultQuestionComponent } from './consult-question/consult-question.component';
 import { ChatComponent } from './ChatApp/chat/chat.component';
+import { ZoomComponent } from './Zoom/zoom/zoom.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 const routes: Routes = [
@@ -43,8 +45,10 @@ const routes: Routes = [
   {path:"Question/:id",component:ConsultQuestionComponent},
   {path:"chat",component:ChatComponent},
   {path:"chat/:id",component:ChatComponent},
+  { path: ':meeting/:passcode/:role', component: ZoomComponent },
+{ path: 'zoom', component: ZoomComponent },
+{ path: 'myprofile', component: MyProfileComponent },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

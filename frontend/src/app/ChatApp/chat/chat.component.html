@@ -6,6 +6,8 @@
       <div class="col-md-4">
   
         <div class="user-list-card">
+          <h3>Chats</h3>
+          <input type="text" placeholder="...search" class="search">
           <div class="user-card"
                 [ngClass]="{'active': user?.id === selectedUser?.id}"
                *ngFor="let user of userList"
@@ -25,10 +27,10 @@
           <ng-container *ngIf="selectedUser">
             <div class="chat-header">
   
-              <!-- <img [src]="selectedUser?.image"
+              <img [src]="selectedUser?.image"
                    [alt]="selectedUser?.fullName"
                    class="avatar"
-              /> -->
+              />
               <p class="username">{{selectedUser?.fullName}}</p>
   
             </div>
@@ -66,7 +68,7 @@
           </ng-container>
           <ng-container *ngIf="!selectedUser">
             <div class="nouser">
-              <h3>Select a user</h3>
+              <!-- <h3>Select a user</h3> -->
             </div>
             
           </ng-container>

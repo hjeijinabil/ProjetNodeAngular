@@ -25,7 +25,7 @@ const socialAuth =  async (req, res) => {
                 
                 
                 fullName: payload.name,
-                role:'user',
+                role:'client',
                 avatar: payload.picture
                 // ... other fields of the model
             });
